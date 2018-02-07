@@ -43,6 +43,7 @@ export default class Dialog extends React.Component {
 
   getComponentChildren() {
     return React.Children.toArray(this.props.children).reduce((result, element) => {
+      console.log('element', element);
       if (Dialog.resolvedComponentNames.includes(element.type.name)) {
         result[element.type.name] = element;
       }
@@ -51,9 +52,9 @@ export default class Dialog extends React.Component {
   }
 
   render() {
-    console.log({DialogContent});
+    console.log({ DialogContent });
     const compChildren = this.getComponentChildren();
-    console.log({compChildren});
+    console.log({ compChildren });
     console.log(DialogHeader.name);
     console.log('this.props.children', this.props.children);
     const {
@@ -61,12 +62,14 @@ export default class Dialog extends React.Component {
       [DialogContent.name]: dialogContent,
       [DialogActions.name]: dialogActions,
     } = this.getComponentChildren();
-
+    console.log({ dialogHeader });
     return (
       <dialog className="dialog" onClick={this.backDropClick} ref={this.dialogRef}>
-        {dialogHeader}
-        {dialogContent}
-        {DialogActions}
+        <div className="dialog-inside">
+          {dialogHeader}
+          {dialogContent}
+          {dialogActions}
+        </div>
       </dialog>
     );
   }

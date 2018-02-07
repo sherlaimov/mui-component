@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function DialogActions({ children }) {
-  return <section className="dialog-actions">{actionButtons}</section>;
+export default function DialogActions({ children, top }) {
+  return <section className={`dialog-actions ${top ? 'top' : ''}`}>{children}</section>;
 }

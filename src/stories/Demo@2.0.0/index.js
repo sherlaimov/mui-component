@@ -3,7 +3,7 @@ import Dialog from '../../components/Dialog@2.0.0/Dialog';
 import DialogContent from '../../components/Dialog@2.0.0/DialogContent';
 import DialogActions from '../../components/Dialog@2.0.0/DialogActions';
 import DialogHeader from '../../components/Dialog@2.0.0/DialogHeader';
-console.log({Dialog});
+console.log({ Dialog });
 import './style.css';
 
 export default class Demo extends React.Component {
@@ -26,16 +26,20 @@ export default class Demo extends React.Component {
       <div className="container">
         <button onClick={this.openDialog}>Click me</button>
         <Dialog
-          header={<b>Some Header</b>}
-          actionButtons={[
-            <button onClick={this.closeDialog} key={0}>
-              Close
-            </button>,
-          ]}
           onClose={this.closeDialog}
           open={isDialogOpen}
         >
-          <h1>Some Content</h1>
+          <DialogHeader bottom={true}>
+            <b>Some Header</b>
+          </DialogHeader>
+          <DialogContent>
+            <h1>Some content</h1>
+          </DialogContent>
+          <DialogActions>
+            <button onClick={this.closeDialog}>
+              Close
+            </button>
+          </DialogActions>
         </Dialog>
       </div>
     );
